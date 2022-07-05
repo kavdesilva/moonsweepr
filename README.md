@@ -1,5 +1,4 @@
-# **Project One**
-# **Title: 'moonsweepr'**
+# **Project One: 'moonsweepr'**
 ## Date: 7/4/2022
 ### By: Kristina DeSilva
 
