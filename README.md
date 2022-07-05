@@ -9,7 +9,7 @@
 ***
 
 ### *Description*
-#### A minesweeper style game called 'moonsweepr'--player is an astronaut mining for ice on the moon. In between the ice are pockets of highly combustible material (mines), which end the game upon being striked (clicked). The value of each numbered square revealed during gameplay are added as points to score. There will be three levels of difficulty based on number of squares in grid (level 1 = 10x10; level 2 = 15x15; level 3 = 20x20).
+#### A minesweeper style game called 'moonsweepr'--player is an astronaut mining for ice on the moon. In between the ice are pockets of highly combustible material (mines), which end the game upon being struck (clicked). The value of each numbered square revealed during gameplay are added as points to score. There will be three levels of difficulty based on number of squares in grid (level 1 = 10x10; level 2 = 15x15; level 3 = 20x20).
 
 ***
 
