@@ -36,9 +36,9 @@
 ### *Future Updates*
 - [x] README.md
 - [x] Trello Board
-- [ ] Wireframes
-- [ ] HTML pages (intro & level)
-- [ ] CSS pages (intro & level)
+- [x] Wireframes
+- [ ] HTML pages (intro & levels 1-3)
+- [ ] CSS pages (intro & levels 1-3)
 - [ ] JS pages (intro, levels 1-3)
 
 ### *Post-MVP*
