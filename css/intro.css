@@ -1,7 +1,7 @@
 body {
     background-image: linear-gradient(rgb(1, 1, 54), rgb(0, 0, 0));
     background-size: contain;
-    color: whitesmoke;
+    color: rgb(245, 245, 245);
     text-align: center;
     font-family: 'Odibee Sans', sans-serif;
     font-size: 16px;
@@ -15,9 +15,9 @@ h1 {
     width: max-content;
     font-size: 7rem;
     background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54));
-    border: 3px solid whitesmoke;
+    border: 3px solid rgb(245, 245, 245);
     border-radius: 1rem;
-    box-shadow: 0 6px #999;
+    box-shadow: 0 6px rgb(153, 153, 153);
 }
 
 h2 {
@@ -26,24 +26,24 @@ h2 {
 
 button {
     font-family: 'Odibee Sans', sans-serif;
-    color: whitesmoke;
+    color: rgb(245, 245, 245);
     background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54));
-    border: 2px solid whitesmoke;
+    border: 2px solid rgb(245, 245, 245);
     border-radius: .7rem;
     padding: .3rem 1.5rem 0 1.5rem;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 5px #999;
+    box-shadow: 0 5px rgb(153, 153, 153);
 }
 
-.button:hover {
-    color: white;
-    border: 2px solid white;
+button:hover {
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 5px rgb(102, 102, 102);
 }
 
-.button:active {
-    transform: scaleY(0.60);
-    box-shadow: 0 2px #666;
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px rgb(102, 102, 102);
   }
 
 .level-select {
