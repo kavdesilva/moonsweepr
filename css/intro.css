@@ -44,12 +44,16 @@ button:hover {
 button:active {
     transform: translateY(3px);
     box-shadow: 0 2px rgb(102, 102, 102);
-  }
+}
 
 .level-select {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.level:focus {
+    color: rgb(255, 165, 0);
 }
 
 .level {
