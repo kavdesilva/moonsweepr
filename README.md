@@ -1,6 +1,8 @@
-# **Project Title: 'moonsweepr'**
+# **Project One**
+# **Title: 'moonsweepr'**
 ## Date: 7/4/2022
 ### By: Kristina DeSilva
+
 
 #### [Github](https://github.com/kavdesilva)
 
@@ -24,9 +26,9 @@
 ***
 
 ### *Wireframes*
-#### Introduction Page
+#### Introduction Page(https://wireframe.cc/EdV80K)
 ![Image](url)
-#### Level Page
+#### Level Page(https://wireframe.cc/sDSugC)
 ![Image](url)
 
 ***
