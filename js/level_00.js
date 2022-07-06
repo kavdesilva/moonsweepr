@@ -43,6 +43,8 @@ generateGrid()
 
 ///////////////////////////////////// game logic
 
+let gameOver = false
+
 const revealMines = () => {
     // highlights mines in red--see level_00.css for attributes/classes
     // i = row; j = column
@@ -64,16 +66,17 @@ const checkLevelCompletion = () => {
     if (levelComplete) {
         alert('you win')
         revealMines()
-        return
+        gameOver = true
     }
 }
 
 const clickCell = (cell) => {
     //check if user clicked on a mine
+    if (gameOver === true) return
     if(cell.getAttribute('data-mine')==='true'){
         revealMines()
         alert('you hit a mine\n\ngame over')
-        return
+        gameOver = true
     } else {
         cell.className='clicked'
         // count and display number of adjacent mines
