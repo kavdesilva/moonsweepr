@@ -22,7 +22,7 @@ h1 {
 
 h1:hover {
     color: rgb(255, 165, 0);
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54, .9));
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54, .8));
     box-shadow: 1px 4px rgb(102, 102, 102);
 }
 
@@ -59,5 +59,5 @@ h2 {
   }
   
   #grid TR TD.mine {
-      background: #FF0000;
+      background: orangered;
   }

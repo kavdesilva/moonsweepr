@@ -21,7 +21,7 @@ const generateGrid = () => {
             cell = row.insertCell(j);
             cell.onclick = () => {clickCell(this)}
             let mine = document.createAttribute('data-mine')
-            mine.value = 'true'
+            mine.value = 'false'
             cell.setAttributeNode(mine)
         }
     }
@@ -41,3 +41,15 @@ const addMines = () => {
 generateGrid()
 
 ///////////////////////////////////// game logic
+
+const revealMines = () => {
+    // highlights mines in red--see level_00.css for attributes/classes
+    // i = row; j = column
+    for (i=0; i<10; i++) {
+        for (j=0; j<10; j++){
+            let cell = grid.rows[i].cells[j]
+            if (cell.getAttribute('data-mine')==='true') cell.className='mine'
+        }
+    }
+}
+revealMines()
