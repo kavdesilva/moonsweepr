@@ -64,6 +64,7 @@ const checkLevelCompletion = () => {
     if (levelComplete) {
         alert('you win')
         revealMines()
+        return
     }
 }
 
@@ -72,6 +73,7 @@ const clickCell = (cell) => {
     if(cell.getAttribute('data-mine')==='true'){
         revealMines()
         alert('you hit a mine\n\ngame over')
+        return
     } else {
         cell.className='clicked'
         // count and display number of adjacent mines
