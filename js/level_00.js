@@ -14,12 +14,12 @@ const testMode = true; // set to true to see mine location
 const generateGrid = () => {
     // generates 10x10 grid
     // i = row; j = column
-    grid.innerHTML = ""
+    grid.innerHTML = ''
     for (i=0; i<10; i++){
         row = grid.insertRow(i);
         for (j=0; j<10; j++){
             cell = row.insertCell(j);
-            cell.onclick = () => {clickCell(this)}
+            cell.onclick = () => clickCell(this)
             let mine = document.createAttribute('data-mine')
             mine.value = 'false'
             cell.setAttributeNode(mine)
@@ -52,4 +52,46 @@ const revealMines = () => {
         }
     }
 }
-revealMines()
+
+const checkLevelCompletion = () => {
+    let levelComplete = true
+    for (i=0; i<10; i++) {
+        for (j=0; j<10; j++){
+            if((grid.rows[i].cells[j].getAttribute('data-mine')==='false') && (grid.rows[i].cells[j].innerHTML==='')) levelComplete = false
+        }
+    }
+    if (levelComplete) {
+        alert('you win')
+        revealMines()
+    }
+}
+
+const clickCell = (cell) => {
+    //check if user clicked on a mine
+    if(cell.getAttribute('data-mine')==='true'){
+        revealMines()
+        alert('you hit a mine\n\ngame over')
+    } else {
+        cell.className='clicked'
+        // count and display number of adjacent mines
+        let mineCount = 0
+        let cellRow = cell.parentNode.rowIndex
+        let cellCol = cell.cellIndex
+        for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++){
+            for (j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++){
+                if (grid.rows[i].cells[j].getAttribute('data-mine')=='true') mineCount++;
+            }
+        }
+        cell.innerHTML=mineCount
+        if (mineCount===0){
+            // reveal adjacent cells without mines
+            for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
+                for(j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
+                  // recursive call - i don't exactly know what this means.
+                  if (grid.rows[i].cells[j].innerHTML=='') clickCell(grid.rows[i].cells[j]);
+                }
+            }
+        }
+        checkLevelCompletion()
+    }
+}
