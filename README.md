@@ -49,5 +49,6 @@
 
 ### *Credits*
 #### Minesweeper in JavaScript: [101Computing.net](https://www.101computing.net/minesweeper-in-javascript/)
-#### Build your own MINESWEEPER game in pure JavaScript, HTML and CSS while learning about RECURSION: [Youtube - Code with Ania Kubów](https://www.youtube.com/watch?v=rxdGAKRndz8)
+#### Build your own MINESWEEPER game in pure JavaScript, HTML and CSS while learning about RECURSION: [Youtube.com - Code with Ania Kubów](https://www.youtube.com/watch?v=rxdGAKRndz8)
 #### How To Animate Buttons: [w3schools.com](https://www.w3schools.com/howto/howto_css_animate_buttons.asp)
+#### MDN Web Docs - HTMLElement.focus(): [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)

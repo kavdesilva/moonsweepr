@@ -16,7 +16,18 @@ h1 {
     background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54));
     border: 2px solid whitesmoke;
     border-radius: .7rem;
-    box-shadow: 0 4px #999;
+    box-shadow: 1px 4px #999;
+    cursor: pointer;
+}
+
+h1:hover {
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 1px 4px rgb(102, 102, 102);
+}
+
+h1:active {
+    transform: translateY(2px);
+    box-shadow: 1px 2px rgb(102, 102, 102);
 }
 
 h2 {
