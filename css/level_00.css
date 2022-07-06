@@ -55,8 +55,19 @@ h2 {
     height: 38px;
     width: 38px;
     border: 1px solid white;
+    font-size: 2rem;
+    line-height: 140%;
 }
 
 .mine {
     background-color: orangered;
 }
+
+.checked {
+    background-color: turquoise;
+}
+
+.checked-0 {
+    background-color: paleturquoise;
+}
+

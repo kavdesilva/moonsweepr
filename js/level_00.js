@@ -13,7 +13,7 @@ let width = 10
 let squares = []
 let mineAmount = 20
 
-createBoard = () => {
+const createBoard = () => {
     // creates shuffled game array of random mines
     const mineArray = Array(mineAmount).fill('mine')
     const emptyArray = Array(width*width - mineAmount).fill('safe')
@@ -30,12 +30,17 @@ createBoard = () => {
         square.classList.add(shuffledArray[i])
         grid.appendChild(square)
         squares.push(square)
+
+        // click event added to each square
+        square.addEventListener('click', (e) => {
+            click(square)
+        })
     }
 
 
     // adds number of adjacent mines to square
     for(i=0; i < squares.length; i++){
-        let total = 0
+        let total = 0 // same as 'mineCount' in previous tutorial
         const isLeftEdge = (i % width === 0)
         const isRightEdge = (i % width === width-1)
         if (squares[i].classList.contains('safe')){
@@ -50,16 +55,29 @@ createBoard = () => {
             squares[i].setAttribute('data', total)
             // ^^ this code is insane. setting up a table with a for loop in the other tutorial was much faster: it had implicit rules about rows/columns, and you could count the cells without having to account for counting to the left/right at each edge.
 
-            console.log(squares[i]) // tests to see contents of each square, including total
-            squares[i].innerText = total
+            // console.log(squares[i]) // tests to see contents of each square, including total
         }
     }
-
-
 }
 createBoard()
 
+///////////////////////////////////// game logic
 
+const click = (square) => {
+    if (square.classList.contains('mine')){
+        console.log('game over') // tests whether mines are working
+    } else {
+        let total = square.getAttribute('data')
+        if (total !=0) {
+            square.classList.add('checked')
+            square.innerText = total
+            return
+        } else {
+            square.classList.add('checked-0')
+        }
+    }
+}
+// ^^ writing the click functions this way does help with styling as the classes are more clearly dilineated from the set up of the grid (which is covered in math in the previous tutorial--any disruption and you risk breaking it altogether).
 
 
 ///////////////////////////////////// completed: n/a
