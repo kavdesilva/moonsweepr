@@ -39,25 +39,3 @@ h2 {
     margin: 50px auto 30% auto;
 }
 
-/* grid styling below */
-
-#grid {
-    margin: 0 auto;
-    font-family: sans-serif;
-  }
-
-#grid TR TD{
-    border:1px solid white;
-    background: #999999;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-  }
-  
-  #grid TR TD.clicked {
-      background: #333333;
-  }
-  
-  #grid TR TD.mine {
-      background: orangered;
-  }
