@@ -9,7 +9,7 @@ returnHome.addEventListener('click', () => {
 ///////////////////////////////////// build board **(101computing.net tutorial)**
 
 const grid = document.getElementById('grid')
-const testMode = true; // set to true to see mine location
+const testMode = false; // set to true to see mine location
 
 const generateGrid = () => {
     // generates 10x10 grid
@@ -19,7 +19,8 @@ const generateGrid = () => {
         row = grid.insertRow(i);
         for (j=0; j<10; j++){
             cell = row.insertCell(j);
-            cell.onclick = () => clickCell(this)
+            cell.onclick = function() { clickCell(this); } 
+            // to get the clickCell function to work, i had to switch from arrow function syntax to deprecated declaration(??), now game functions as intended. 
             let mine = document.createAttribute('data-mine')
             mine.value = 'false'
             cell.setAttributeNode(mine)
