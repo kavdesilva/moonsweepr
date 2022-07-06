@@ -38,7 +38,7 @@ button {
 
 button:hover {
     color: rgb(255, 165, 0);
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54, .93));
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54, .9));
     box-shadow: 1px 5px rgb(102, 102, 102);
 }
 
@@ -73,7 +73,7 @@ button:active {
 
 #play {
     display: flex;
-    margin: 60px auto 400px auto;
+    margin: 60px auto 35% auto;
     font-size: 4rem;
     padding: .3rem 2rem 0 2rem
 }
