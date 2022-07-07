@@ -60,7 +60,22 @@ h2 {
 }
 
 .checked {
-    background-color: turquoise;
+    background-color: lightcyan;
 }
 
+.one {
+    background-color: paleturquoise;
+}
+.two {
+    background-color: aquamarine;
+}
+.three {
+    background-color: rgb(92, 245, 237);
+}
+.four-plus {
+    background-color: cyan;
+}
 
+.mine {
+    background-color: orangered;
+}

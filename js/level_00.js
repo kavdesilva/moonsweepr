@@ -10,9 +10,14 @@ returnHome.addEventListener('click', () => {
 
 const grid = document.querySelector('.grid')
 const result = document.querySelector('#result')
+const flagsLeft = document.querySelector('#flags-left')
+
+flagsLeft.innerText = 20
+
 let width = 10
 let squares = []
 let mineAmount = 20
+let flags = 0
 
 const createBoard = () => {
     // creates shuffled game array of random mines
@@ -35,6 +40,12 @@ const createBoard = () => {
         // click event added to each square
         square.addEventListener('click', (e) => {
             click(square)
+        })
+
+        // right-click event to add flag to square 
+        square.addEventListener('contextmenu', (e) => {
+            e.preventDefault()
+            addFlag(square)
         })
     }
 
@@ -80,6 +91,10 @@ const click = (square) => {
         let total = square.getAttribute('data')
         if (total !=0) {
             square.classList.add('checked')
+            if (total == 1) square.classList.add('one')
+            if (total == 2) square.classList.add('two')
+            if (total == 3) square.classList.add('three')
+            if (total >= 4) square.classList.add('four-plus')
             square.innerText = total
             return
         }
@@ -140,6 +155,23 @@ const checkSquare = (square, currentId) => {
 }
 // ^^ this code feels unnecessarily complicated. making the div a continuous array (instead of using nested for loop to create columns and rows) that you have to keep amending the rules in order to account for left and right edges ends up making many of these functions repetetive, messy and confusing. this is not DRY code (!DRY). also had to remove styling above on squares with points to get recursive call to work.
 
+const addFlag = (square) => {
+    if (isgameOver) return
+    if (!square.classList.contains('checked') && (flags < mineAmount)) {
+        if (!square.classList.contains('flag')) {
+            square.classList.add('flag')
+            square.innerHTML = ' 🚩'
+            flags++
+            flagsLeft.innerHTML = mineAmount -flags
+        } else {
+            square.classList.remove('flag')
+            square.innerHTML = ''
+            flags--
+            flagsLeft.innerText = mineAmount -flags
+        }
+    }
+}
+
 const gameOver = (square) => {
     result.innerHTML = '<h2>game over</h2>'
     isgameOver = true
@@ -147,6 +179,7 @@ const gameOver = (square) => {
         if (square.classList.contains('mine')) {
           square.classList.add('checked')
           square.style.backgroundColor = 'orangered'
+          // reveals all mines on board
         }
     })
 }
