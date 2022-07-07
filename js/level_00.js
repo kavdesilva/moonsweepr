@@ -15,25 +15,19 @@ const testMode = true
 const createBoard = () => {
     grid.innerHTML = ''
     for (i=0; i<10; i++){
-        row = document.createElement('div')
-        grid.appendChild(row);
-        for (j=0; j<9; j++){
-            cell = document.createElement('div')
-            grid.appendChild(cell);
+        row = grid.insertRow(i);
+        for (j=0; j<10; j++){
+            cell = row.insertCell(j);
             cell.onclick = function() { clickCell(this); } 
         }
     }
-    addMines()
-}
-
-const addMines = () => {
     for (i=0; i<20; i++){
-        let cells = Math.floor(Math.random() *20)
-        let cell = grid.cells[cells]
-        cell.setAttribute('mine')
+        let row = Math.floor(Math.random() * 10)
+        let col = Math.floor(Math.random() * 10)
+        let cell = grid.rows[row].cells[col]
+        cell.setAttribute('class', 'mine')
     }
 }
-
 createBoard()
 
 
