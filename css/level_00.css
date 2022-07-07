@@ -53,13 +53,25 @@ h2 {
     width: 40px;
     height: 40px;
     text-align: center;
-  }
+}
   
-  #grid TR TD.clicked {
-      background: lightgray;
-  }
+#grid TR TD.checked {
+    background: lightgray;
+}
   
-  #grid TR TD.mine {
-      background: orangered;
-  }
+#grid TR TD.mine {
+    background: orangered;
+}
   
+#grid TR TD.one {
+    background-color: rgba(159, 235, 235, 0.959);
+}
+#grid TR TD.two {
+    background-color: aquamarine;
+}
+#grid TR TD.three {
+    background-color: rgb(92, 245, 237);
+}
+#grid TR TD.four-plus {
+    background-color: cyan;
+}
