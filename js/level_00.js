@@ -55,10 +55,10 @@ const click = (cell) => {
                 if (grid.rows[i].cells[j].classList.contains('mine')) mineCount++;
             }
         }
-        if (mineCount===0){
+        if (mineCount === 0){
             for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
                 for(j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
-                  if (grid.rows[i].cells[j].innerHTML=='') click(grid.rows[i].cells[j]);
+                  if (!grid.rows[i].cells[j].classList.contains('mine')) click(grid.rows[i].cells[j])
                 }
             }
         }
@@ -67,7 +67,7 @@ const click = (cell) => {
             if (mineCount == 2) cell.classList.add('two')
             if (mineCount == 3) cell.classList.add('three')
             if (mineCount >= 4) cell.classList.add('four-plus')
-            cell.innerHTML = mineCount
+            cell.innerText = mineCount
         }
     }
 }
