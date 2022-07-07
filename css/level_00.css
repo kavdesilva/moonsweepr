@@ -39,4 +39,22 @@ h2 {
     margin: 0 auto 30% auto;
 }
 
-/* grid styling below **(Youtube.com - Code with Ania Kubów tutorial)** */
+/* grid styling below */
+
+#grid {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: grey;
+    margin: 0 auto;
+    border: 1px solid white;
+}
+
+#grid div {
+    height: 38px;
+    width: 38px;
+    border: 1px solid white;
+    font-size: 2rem;
+    line-height: 140%;
+}

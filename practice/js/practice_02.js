@@ -5,7 +5,7 @@
 const returnHome = document.getElementById('return-home')
 
 returnHome.addEventListener('click', () => {
-    window.location='index.html'
+    window.location='../index.html'
 })
 
 ///////////////////////////////////// build board 
