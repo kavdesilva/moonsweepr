@@ -59,15 +59,15 @@ h2 {
     line-height: 140%;
 }
 
-.mine {
-    background-color: orangered;
-}
-
 .checked {
     background-color: turquoise;
 }
 
 .checked-0 {
     background-color: paleturquoise;
+}
+
+.mine {
+    background-color: orangered;
 }
 

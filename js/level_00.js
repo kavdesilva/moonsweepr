@@ -63,9 +63,19 @@ createBoard()
 
 ///////////////////////////////////// game logic
 
+let gameOver = false
+
 const click = (square) => {
+    let currentId = square.id
+    if (gameOver) return
+    if (square.classList.contains('checked') || 
+        square.classList.contains('checked-0') || 
+        square.classList.contains('flag')) {
+            gameOver = true}
     if (square.classList.contains('mine')){
-        console.log('game over') // tests whether mines are working
+        // console.log('game over') // tests whether mines are working
+        alert('game over')
+        gameOver = true
     } else {
         let total = square.getAttribute('data')
         if (total !=0) {
@@ -74,10 +84,14 @@ const click = (square) => {
             return
         } else {
             square.classList.add('checked-0')
+            return
         }
     }
+    checkSquare(square, currentId)
+    square.classList.add('checked')
 }
 // ^^ writing the click functions this way does help with styling as the classes are more clearly dilineated from the set up of the grid (which is covered in math in the previous tutorial--any disruption and you risk breaking it altogether).
+
 
 
 ///////////////////////////////////// completed: n/a
