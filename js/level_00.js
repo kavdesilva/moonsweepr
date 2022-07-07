@@ -16,14 +16,20 @@ let score = []
 
 const flagsLeft = document.querySelector('#flags-left')
 flagsLeft.innerText = 20
+let flags = 0
+let minesLeft = 20
 
 const createBoard = () => {
     grid.innerHTML = ''
-    for (i=0; i<10; i++){
+    for (var i=0; i<10; i++){
         row = grid.insertRow(i);
         for (j=0; j<10; j++){
             cell = row.insertCell(j);
             cell.onclick = function() {click(this);}
+            cell.addEventListener('contextmenu', function (e) {
+                e.preventDefault()
+                addFlag(this)
+            })
         }
     }
     for (i=0; i<20; i++){
@@ -41,6 +47,7 @@ let gameOver = false
 
 const click = (cell) => {
     if (gameOver === true) return
+    if (cell.classList.contains('flag')) return
     if (cell.classList.contains('mine')){
         alert('game over')
         gameOver = true
@@ -61,11 +68,14 @@ const click = (cell) => {
             }
         }
         if (mineCount === 0){
-            for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
-                for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
-                  if (!grid.rows[i].cells[j].classList.contains('checked') && !grid.rows[i].cells[j].classList.contains('mine')) click(grid.rows[i].cells[j])
+            setTimeout(() => {
+                for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
+                    for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
+                    if (!grid.rows[i].cells[j].classList.contains('checked') && 
+                        !grid.rows[i].cells[j].classList.contains('mine')) click(grid.rows[i].cells[j])
+                    }
                 }
-            }
+            }, 10)
         }
         if (mineCount !=0) {
             if (mineCount == 1) cell.classList.add('one')
@@ -81,5 +91,23 @@ const click = (cell) => {
         }
     }
 }
+
+const addFlag = (cell) => {
+    if (gameOver === true) return
+    if (!cell.classList.contains('checked') && (flags < minesLeft)) {
+        if (!cell.classList.contains('flag')) {
+            cell.classList.add('flag')
+            cell.innerHTML = ' 🚩'
+            flags++
+            flagsLeft.innerHTML = minesLeft -flags
+        } else {
+            cell.classList.remove('flag')
+            cell.innerHTML = ''
+            flags--
+            flagsLeft.innerText = minesLeft -flags
+        }
+    }
+}
+
 
 ///////////////////////////////////// completed: n/a
