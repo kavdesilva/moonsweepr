@@ -85,16 +85,16 @@ const clickCell = (cell) => {
         let mineCount = 0
         let cellRow = cell.parentNode.rowIndex
         let cellCol = cell.cellIndex
-        for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++){
-            for (j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++){
+        for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++){
+            for (var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++){
                 if (grid.rows[i].cells[j].getAttribute('data-mine')=='true') mineCount++;
             }
         }
         cell.innerHTML=mineCount
         if (mineCount===0){
             // reveal adjacent cells without mines
-            for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
-                for(j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
+            for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
+                for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++){
                   // recursive call - i don't exactly know what this means.
                   if (grid.rows[i].cells[j].innerHTML=='') clickCell(grid.rows[i].cells[j]);
                 }

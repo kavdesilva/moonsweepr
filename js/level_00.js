@@ -9,12 +9,13 @@ returnHome.addEventListener('click', () => {
 ///////////////////////////////////// build board 
 
 const grid = document.getElementById('grid')
-const testMode = true
 
 const pointsScored = document.querySelector('#score')
 pointsScored.innerText = 0
 let score = []
 
+const flagsLeft = document.querySelector('#flags-left')
+flagsLeft.innerText = 20
 
 const createBoard = () => {
     grid.innerHTML = ''
@@ -54,14 +55,14 @@ const click = (cell) => {
         let mineCount = 0
         let cellRow = cell.parentNode.rowIndex
         let cellCol = cell.cellIndex
-        for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++){
-            for (j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++){
+        for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
+            for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++){
                 if (grid.rows[i].cells[j].classList.contains('mine')) mineCount++;
             }
         }
         if (mineCount === 0){
-            for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
-                for(j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
+            for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
+                for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
                   if (!grid.rows[i].cells[j].classList.contains('checked') && !grid.rows[i].cells[j].classList.contains('mine')) click(grid.rows[i].cells[j])
                 }
             }
