@@ -71,7 +71,7 @@ const click = (square) => {
     if (square.classList.contains('checked') || 
         square.classList.contains('checked-0') || 
         square.classList.contains('flag')) {
-            gameOver = true}
+            return}
     if (square.classList.contains('mine')){
         // console.log('game over') // tests whether mines are working
         alert('game over')
@@ -82,9 +82,6 @@ const click = (square) => {
             square.classList.add('checked')
             square.innerText = total
             return
-        } else {
-            square.classList.add('checked-0')
-            return
         }
     }
     checkSquare(square, currentId)
@@ -92,6 +89,56 @@ const click = (square) => {
 }
 // ^^ writing the click functions this way does help with styling as the classes are more clearly dilineated from the set up of the grid (which is covered in math in the previous tutorial--any disruption and you risk breaking it altogether).
 
+
+const checkSquare = (square, currentId) => {
+// checks neighboring squares once square is clicked.
+    const isLeftEdge = (currentId % width === 0)
+    const isRightEdge = (currentId % width === width -1)
+
+    setTimeout(() => {
+        if (currentId > 0 && !isLeftEdge){
+            const newId = squares[parseInt(currentId) -1].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+        if (currentId > 9 && !isRightEdge){
+            const newId = squares[parseInt(currentId) +1 -width].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+        if (currentId > 10){
+            const newId = squares[parseInt(currentId) -width].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+        if (currentId > 11 && !isLeftEdge){
+            const newId = squares[parseInt(currentId) -1 -width].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+        if (currentId < 98 && !isRightEdge){
+            const newId = squares[parseInt(currentId) +1].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+        if (currentId < 90 && !isLeftEdge){
+            const newId = squares[parseInt(currentId) -1 +width].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+        if (currentId < 88 && !isRightEdge){
+            const newId = squares[parseInt(currentId) +1 +width].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+        if (currentId < 89){
+            const newId = squares[parseInt(currentId) +width].id
+            const newSquare = document.getElementById(newId)
+            click(newSquare)
+        }
+    }, 10)
+}
+// ^^ this code feels unnecessarily complicated. making the div a continuous array that you have to keep amending the rules in order to account for left and right edges ends up making many of these functions repetetive, messy and confusing. this is not DRY code (!DRY). also had to remove styling above on squares with points to get recursive call to work.
 
 
 ///////////////////////////////////// completed: n/a
