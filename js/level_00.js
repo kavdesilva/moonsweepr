@@ -9,6 +9,7 @@ returnHome.addEventListener('click', () => {
 ///////////////////////////////////// build board **(Youtube.com - Code with Ania Kubów tutorial)**
 
 const grid = document.querySelector('.grid')
+const result = document.querySelector('#result')
 let width = 10
 let squares = []
 let mineAmount = 20
@@ -63,19 +64,18 @@ createBoard()
 
 ///////////////////////////////////// game logic
 
-let gameOver = false
+let isgameOver = false
 
 const click = (square) => {
     let currentId = square.id
-    if (gameOver) return
+    if (isgameOver) return
     if (square.classList.contains('checked') || 
         square.classList.contains('checked-0') || 
         square.classList.contains('flag')) {
             return}
     if (square.classList.contains('mine')){
         // console.log('game over') // tests whether mines are working
-        alert('game over')
-        gameOver = true
+        gameOver()
     } else {
         let total = square.getAttribute('data')
         if (total !=0) {
@@ -138,7 +138,18 @@ const checkSquare = (square, currentId) => {
         }
     }, 10)
 }
-// ^^ this code feels unnecessarily complicated. making the div a continuous array that you have to keep amending the rules in order to account for left and right edges ends up making many of these functions repetetive, messy and confusing. this is not DRY code (!DRY). also had to remove styling above on squares with points to get recursive call to work.
+// ^^ this code feels unnecessarily complicated. making the div a continuous array (instead of using nested for loop to create columns and rows) that you have to keep amending the rules in order to account for left and right edges ends up making many of these functions repetetive, messy and confusing. this is not DRY code (!DRY). also had to remove styling above on squares with points to get recursive call to work.
+
+const gameOver = (square) => {
+    result.innerHTML = '<h2>game over</h2>'
+    isgameOver = true
+    squares.forEach(square => {
+        if (square.classList.contains('mine')) {
+          square.classList.add('checked')
+          square.style.backgroundColor = 'orangered'
+        }
+    })
+}
 
 
 ///////////////////////////////////// completed: n/a
