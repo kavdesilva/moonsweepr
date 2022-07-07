@@ -11,6 +11,10 @@ returnHome.addEventListener('click', () => {
 const grid = document.getElementById('grid')
 const testMode = true
 
+const pointsScored = document.querySelector('#score')
+pointsScored.innerText = 0
+let score = []
+
 
 const createBoard = () => {
     grid.innerHTML = ''
@@ -58,7 +62,7 @@ const click = (cell) => {
         if (mineCount === 0){
             for (i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
                 for(j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
-                  if (!grid.rows[i].cells[j].classList.contains('mine')) click(grid.rows[i].cells[j])
+                  if (!grid.rows[i].cells[j].classList.contains('checked') && !grid.rows[i].cells[j].classList.contains('mine')) click(grid.rows[i].cells[j])
                 }
             }
         }
@@ -68,6 +72,11 @@ const click = (cell) => {
             if (mineCount == 3) cell.classList.add('three')
             if (mineCount >= 4) cell.classList.add('four-plus')
             cell.innerText = mineCount
+            score.push(parseInt(mineCount))
+            const sum = score.reduce((accumulator, mineCount) => {
+                return accumulator + mineCount
+              }, 0)
+            pointsScored.innerText = sum
         }
     }
 }
