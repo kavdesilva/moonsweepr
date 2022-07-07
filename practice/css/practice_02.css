@@ -40,3 +40,43 @@ h2 {
 }
 
 /* grid styling below **(Youtube.com - Code with Ania Kubów tutorial)** */
+
+.grid {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: grey;
+    margin: 0 auto;
+    border: 1px solid white;
+}
+
+.grid div {
+    height: 38px;
+    width: 38px;
+    border: 1px solid white;
+    font-size: 2rem;
+    line-height: 140%;
+}
+
+.checked {
+    background-color: lightgray;
+}
+
+.one {
+    background-color: rgba(159, 235, 235, 0.959);
+}
+.two {
+    background-color: aquamarine;
+}
+.three {
+    background-color: rgb(92, 245, 237);
+}
+.four-plus {
+    background-color: cyan;
+}
+
+/* .mine {
+    background-color: orangered;
+} */
+/* ^^ use for testing mechanics without constantly ending game by accident */

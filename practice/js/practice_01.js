@@ -1,5 +1,13 @@
 ///////////////////////////////////// tutorial practice **(101computing.net tutorial)**
 
+///////////////////////////////////// return home key
+
+const returnHome = document.getElementById('return-home')
+
+returnHome.addEventListener('click', () => {
+    window.location='index.html'
+})
+
 ///////////////////////////////////// build board 
 
 const grid = document.getElementById('grid')

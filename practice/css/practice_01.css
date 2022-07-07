@@ -39,4 +39,25 @@ h2 {
     margin: 0 auto 30% auto;
 }
 
-/* grid styling below **(Youtube.com - Code with Ania Kubów tutorial)** */
+/* grid styling below **(101computing.net tutorial)** */
+
+#grid {
+    margin: 0 auto;
+    font-family: sans-serif;
+  }
+
+#grid TR TD{
+    border:1px solid white;
+    background: #999999;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+  }
+  
+  #grid TR TD.clicked {
+      background: #333333;
+  }
+  
+  #grid TR TD.mine {
+      background: orangered;
+  }
