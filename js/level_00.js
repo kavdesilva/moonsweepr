@@ -3,7 +3,7 @@
 const returnHome = document.getElementById('return-home')
 
 returnHome.addEventListener('click', () => {
-    window.location='intro.html'
+    window.location='index.html'
 })
 
 ///////////////////////////////////// build board **(Youtube.com - Code with Ania Kubów tutorial)**
@@ -11,13 +11,18 @@ returnHome.addEventListener('click', () => {
 const grid = document.querySelector('.grid')
 const result = document.querySelector('#result')
 const flagsLeft = document.querySelector('#flags-left')
+const pointsScored = document.querySelector('#score')
 
 flagsLeft.innerText = 20
+pointsScored.innerText = 0
 
 let width = 10
 let squares = []
 let mineAmount = 20
 let flags = 0
+let score = []
+
+let isgameOver = false
 
 const createBoard = () => {
     // creates shuffled game array of random mines
@@ -75,8 +80,6 @@ createBoard()
 
 ///////////////////////////////////// game logic
 
-let isgameOver = false
-
 const click = (square) => {
     let currentId = square.id
     if (isgameOver) return
@@ -86,6 +89,7 @@ const click = (square) => {
             return}
     if (square.classList.contains('mine')){
         // console.log('game over') // tests whether mines are working
+        alert('you hit a mine.\ngame over.')
         gameOver()
     } else {
         let total = square.getAttribute('data')
@@ -96,6 +100,12 @@ const click = (square) => {
             if (total == 3) square.classList.add('three')
             if (total >= 4) square.classList.add('four-plus')
             square.innerText = total
+            score.push(parseInt(total))
+            const sum = score.reduce((accumulator, total) => {
+                return accumulator + total
+              }, 0)
+            pointsScored.innerText = sum
+            // ^^ IT WORKED!!!!! score is the total added up
             return
         }
     }
@@ -163,6 +173,7 @@ const addFlag = (square) => {
             square.innerHTML = ' 🚩'
             flags++
             flagsLeft.innerHTML = mineAmount -flags
+            checkWin()
         } else {
             square.classList.remove('flag')
             square.innerHTML = ''
@@ -177,12 +188,24 @@ const gameOver = (square) => {
     isgameOver = true
     squares.forEach(square => {
         if (square.classList.contains('mine')) {
-          square.classList.add('checked')
-          square.style.backgroundColor = 'orangered'
+            square.classList.add('checked')
+            square.style.backgroundColor = 'orangered'
           // reveals all mines on board
         }
     })
 }
 
+const checkWin = () => {
+    let matches = 0
 
-///////////////////////////////////// completed: n/a
+    for (let i = 0; i < squares.length; i++) {
+        if (squares[i].classList.contains('flag') && squares[i].classList.contains('mine')) {matches ++}
+        if (matches === mineAmount) {
+            result.innerHTML = 'YOU WIN!'
+            isGameOver = true
+        }
+    }
+}
+// ^^ these are the win rules for traditional minesweeper, with flags covering all mines, but in my last practice, the win was triggered simply by exposing all squares without hitting any mines. i might stick to the latter for my final deployment, since there is a functional points system in place, but for now i'm pretty happy with the results. :)
+
+///////////////////////////////////// completed: thursday 7/7/2022 10:59am

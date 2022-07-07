@@ -35,8 +35,8 @@ h2 {
     font-size: 2.5rem;
 }
 
-#score {
-    margin: 50px auto 30% auto;
+#scoreboard {
+    margin: 0 auto 30% auto;
 }
 
 /* grid styling below **(Youtube.com - Code with Ania Kubów tutorial)** */
@@ -60,11 +60,11 @@ h2 {
 }
 
 .checked {
-    background-color: lightcyan;
+    background-color: lightgray;
 }
 
 .one {
-    background-color: paleturquoise;
+    background-color: rgba(159, 235, 235, 0.959);
 }
 .two {
     background-color: aquamarine;
@@ -76,6 +76,7 @@ h2 {
     background-color: cyan;
 }
 
-.mine {
+/* .mine {
     background-color: orangered;
-}
+} */
+/* ^^ use for testing mechanics without constantly ending game by accident */

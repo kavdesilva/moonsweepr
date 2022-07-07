@@ -1,5 +1,5 @@
 let returnHome = document.getElementById('return-home')
 
 returnHome.addEventListener('click', () => {
-    window.location='intro.html'
+    window.location='index.html'
 })
