@@ -44,6 +44,7 @@
 - [ ] Choose-Your-Own-Adventure Gameplay
 - [ ] Narrative Pages (CYO)
 - [ ] Three Ending Pages (based on narrative choices/score during gameplay)
+- [ ] Mobile functionality/responsiveness
 
 ***
 
