@@ -1,0 +1,125 @@
+body {
+    background-image: linear-gradient(rgb(1, 1, 54), rgb(0, 0, 0));
+    color: whitesmoke;
+    text-align: center;
+    font-family: 'Odibee Sans', sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    margin: 25px auto 0 auto;
+    padding: 0 1rem;
+    width: max-content;
+    font-size: 4rem;
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54));
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: .7rem;
+    box-shadow: 1px 4px #999;
+    cursor: pointer;
+}
+
+h1:hover {
+    color: rgb(255, 165, 0);
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54, .8));
+    box-shadow: 1px 4px rgb(102, 102, 102);
+}
+
+h1:active {
+    transform: translateY(2px);
+    box-shadow: 1px 2px rgb(102, 102, 102);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin: 20px auto;
+}
+
+#panel {
+    margin: 0 auto 30% auto;
+}
+
+#end-game {
+    position: absolute;
+    margin: auto;
+    top: 35%;
+    right: 0;
+    left: 0;
+    width: 300px;
+    height: 200px;
+    z-index: 1;
+    display: none;
+}
+
+#result {
+    color: orange;
+    background-color: hsl(0, 0%, 0%, 0.6);
+    font-size: 3rem;
+}
+
+#replay {
+    /* margin: 10px auto; */
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Odibee Sans', sans-serif;
+    color: rgb(245, 245, 245);
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54));
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: .7rem;
+    padding: .3rem 1.5rem 0 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 1px 5px rgb(153, 153, 153);
+}
+
+
+#replay:hover {
+    color: rgb(255, 165, 0);
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54, .8));
+    box-shadow: 1px 5px rgb(102, 102, 102);
+}
+
+#replay:active {
+    transform: translateY(3px);
+    box-shadow: 1px 2px rgb(102, 102, 102);
+}
+
+/* grid styling below */
+
+#grid {
+    margin: 0 auto;
+    font-family: 'Odibee Sans', sans-serif;
+    font-size: 1.5rem;
+  }
+
+#grid TR TD{
+    border:1px solid rgb(255, 255, 255);
+    background: rgb(128, 128, 128);
+    border: 2px solid rgb(255, 255, 255);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+  
+#grid TR TD.checked {
+    background: lightgray;
+}
+  
+/* #grid TR TD.mine {
+    background: rgb(255, 69, 0);
+    /* ** for testing purposes ** //
+} */
+  
+#grid TR TD.one {
+    background-color: rgba(159, 235, 235, 0.959);
+}
+#grid TR TD.two {
+    background-color: rgb(127, 255, 212);
+}
+#grid TR TD.three {
+    background-color: rgb(92, 245, 237);
+}
+#grid TR TD.four-plus {
+    background-color: rgb(0, 255, 255);
+}

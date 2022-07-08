@@ -11,7 +11,7 @@ returnHome.addEventListener('click', () => {
 const grid = document.getElementById('grid')
 const result = document.getElementById('result')
 
-const playAgain = document.getElementById('replay')
+const playAgain = document.getElementById('end-game')
 
 const pointsScored = document.querySelector('#score')
 pointsScored.innerText = 0
@@ -33,7 +33,7 @@ const createBoard = () => {
             })
         }
     }
-    for (i=0; i<25; i++){
+    for (i=0; i<30; i++){
         let row = Math.floor(Math.random() * 10)
         let col = Math.floor(Math.random() * 15)
         let cell = grid.rows[row].cells[col]
@@ -130,7 +130,7 @@ const addFlag = (cell) => {
 
 const checkLevelComplete = () => {
     let levelComplete = false
-    if (150 - cellsChecked == minesLeft) {
+    if (100 - cellsChecked == minesLeft) {
         levelComplete = true
     }
     if (levelComplete == true){
@@ -143,16 +143,16 @@ const checkLevelComplete = () => {
 const displayReplay = () => {
     setTimeout(() => {
         if (gameOver == true) {
-            playAgain.style.visibility = 'visible'
+            playAgain.style.display = 'block'
         } 
-    }, 900)
+    }, 300)
 }
 
 playAgain.addEventListener('click', () => {
     gameOver = false
     createBoard()
     result.innerText = ''
-    playAgain.style.visibility = 'hidden'
+    playAgain.style.display = 'none'
     pointsScored.innerText = 0
     score = []
     minesLeft = 0

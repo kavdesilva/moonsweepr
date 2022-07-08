@@ -40,13 +40,26 @@ h2 {
     margin: 0 auto 30% auto;
 }
 
+#end-game {
+    position: absolute;
+    margin: auto;
+    top: 25%;
+    right: 0;
+    left: 0;
+    width: 300px;
+    height: 200px;
+    z-index: 1;
+    display: none;
+}
+
 #result {
-    color: rgb(255, 69, 0);
+    color: orange;
+    background-color: hsl(0, 0%, 0%, 0.6);
     font-size: 3rem;
-    margin: 10px auto;
 }
 
 #replay {
+    /* margin: 10px auto; */
     font-size: 3rem;
     text-align: center;
     font-family: 'Odibee Sans', sans-serif;
@@ -58,8 +71,8 @@ h2 {
     text-align: center;
     cursor: pointer;
     box-shadow: 1px 5px rgb(153, 153, 153);
-    visibility: hidden;
 }
+
 
 #replay:hover {
     color: rgb(255, 165, 0);
