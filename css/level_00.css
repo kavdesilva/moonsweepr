@@ -33,10 +33,43 @@ h1:active {
 
 h2 {
     font-size: 2.5rem;
+    margin: 20px auto;
 }
 
-#scoreboard {
+#panel {
     margin: 0 auto 30% auto;
+}
+
+#result {
+    color: rgb(255, 69, 0);
+    font-size: 3rem;
+    margin: 10px auto;
+}
+
+#replay {
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Odibee Sans', sans-serif;
+    color: rgb(245, 245, 245);
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54));
+    border: 2px solid rgb(245, 245, 245);
+    border-radius: .7rem;
+    padding: .3rem 1.5rem 0 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 1px 5px rgb(153, 153, 153);
+    visibility: hidden;
+}
+
+#replay:hover {
+    color: rgb(255, 165, 0);
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(1, 1, 54, .8));
+    box-shadow: 1px 5px rgb(102, 102, 102);
+}
+
+#replay:active {
+    transform: translateY(3px);
+    box-shadow: 1px 2px rgb(102, 102, 102);
 }
 
 /* grid styling below */
@@ -60,10 +93,10 @@ h2 {
     background: lightgray;
 }
   
-#grid TR TD.mine {
-    background: orangered;
-    /* ** for testing purposes ** */
-}
+/* #grid TR TD.mine {
+    background: rgb(255, 69, 0);
+    /* ** for testing purposes ** //
+} */
   
 #grid TR TD.one {
     background-color: rgba(159, 235, 235, 0.959);

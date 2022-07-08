@@ -9,6 +9,9 @@ returnHome.addEventListener('click', () => {
 ///////////////////////////////////// build board 
 
 const grid = document.getElementById('grid')
+const result = document.getElementById('result')
+
+const playAgain = document.getElementById('replay')
 
 const pointsScored = document.querySelector('#score')
 pointsScored.innerText = 0
@@ -46,7 +49,6 @@ const countMines = () => {
             if (cell.classList.contains('mine')) minesLeft++
         }
     }
-    console.log(minesLeft)
 }
 countMines()
 
@@ -63,8 +65,9 @@ const click = (cell) => {
     if (cell.classList.contains('flag')) return
     if (cell.classList.contains('checked')) return
     if (cell.classList.contains('mine')){
-        alert('game over')
+        result.innerText = 'game over'
         gameOver = true
+        displayReplay()
         for (i=0; i<7; i++) {
             for (j=0; j<7; j++){
                 let cell = grid.rows[i].cells[j]
@@ -131,9 +134,32 @@ const checkLevelComplete = () => {
         levelComplete = true
     }
     if (levelComplete == true){
-        alert('you win')
+        result.innerText = 'you win!'
         gameOver = true
+        displayReplay()
     }
 }
+
+const displayReplay = () => {
+    setTimeout(() => {
+        if (gameOver == true) {
+            playAgain.style.visibility = 'visible'
+        } 
+    }, 900)
+}
+
+playAgain.addEventListener('click', () => {
+    gameOver = false
+    createBoard()
+    result.innerText = ''
+    playAgain.style.visibility = 'hidden'
+    pointsScored.innerText = 0
+    score = []
+    minesLeft = 0
+    cellsChecked = 0
+    countMines()
+    flags = 0
+    flagsLeft.innerText = minesLeft
+})
 
 ///////////////////////////////////// completed: n/a
