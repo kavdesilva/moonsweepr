@@ -36,9 +36,9 @@
 - [x] README.md
 - [x] Trello Board
 - [x] Wireframes
-- [ ] HTML pages (intro & levels 1-3)
-- [ ] CSS pages (intro & levels 1-3)
-- [ ] JS pages (intro, levels 1-3)
+- [x] HTML pages (intro & levels 1-3)
+- [x] CSS pages (intro & levels 1-3)
+- [x] JS pages (intro, levels 1-3)
 
 ### *Post-MVP*
 - [ ] Choose-Your-Own-Adventure Gameplay
