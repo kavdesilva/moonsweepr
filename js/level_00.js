@@ -17,13 +17,14 @@ let score = []
 const flagsLeft = document.querySelector('#flags-left')
 flagsLeft.innerText = 20
 let flags = 0
-let minesLeft = 20
+let minesLeft = 0
+let cellsChecked = 0
 
 const createBoard = () => {
     grid.innerHTML = ''
     for (var i=0; i<10; i++){
         row = grid.insertRow(i);
-        for (j=0; j<10; j++){
+        for (var j=0; j<10; j++){
             cell = row.insertCell(j);
             cell.onclick = function() {click(this);}
             cell.addEventListener('contextmenu', function (e) {
@@ -36,7 +37,7 @@ const createBoard = () => {
         let row = Math.floor(Math.random() * 10)
         let col = Math.floor(Math.random() * 10)
         let cell = grid.rows[row].cells[col]
-        cell.setAttribute('class', 'mine')
+        cell.classList.add('mine')
     }
 }
 createBoard()
@@ -48,6 +49,7 @@ let gameOver = false
 const click = (cell) => {
     if (gameOver === true) return
     if (cell.classList.contains('flag')) return
+    if (cell.classList.contains('checked')) return
     if (cell.classList.contains('mine')){
         alert('game over')
         gameOver = true
@@ -58,16 +60,16 @@ const click = (cell) => {
             }
         }
     } else {
-        cell.setAttribute('class', 'checked')
-        let mineCount = 0
+        cell.classList.add('checked')
+        let mineAdjacent = 0
         let cellRow = cell.parentNode.rowIndex
         let cellCol = cell.cellIndex
         for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
             for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++){
-                if (grid.rows[i].cells[j].classList.contains('mine')) mineCount++;
+                if (grid.rows[i].cells[j].classList.contains('mine')) mineAdjacent++;
             }
         }
-        if (mineCount === 0){
+        if (mineAdjacent === 0){
             setTimeout(() => {
                 for (var i=Math.max(cellRow-1,0); i<=Math.min(cellRow+1,9); i++) {
                     for(var j=Math.max(cellCol-1,0); j<=Math.min(cellCol+1,9); j++) {
@@ -77,20 +79,33 @@ const click = (cell) => {
                 }
             }, 10)
         }
-        if (mineCount !=0) {
-            if (mineCount == 1) cell.classList.add('one')
-            if (mineCount == 2) cell.classList.add('two')
-            if (mineCount == 3) cell.classList.add('three')
-            if (mineCount >= 4) cell.classList.add('four-plus')
-            cell.innerText = mineCount
-            score.push(parseInt(mineCount))
-            const sum = score.reduce((accumulator, mineCount) => {
-                return accumulator + mineCount
+        if (mineAdjacent !=0) {
+            if (mineAdjacent == 1) cell.classList.add('one')
+            if (mineAdjacent == 2) cell.classList.add('two')
+            if (mineAdjacent == 3) cell.classList.add('three')
+            if (mineAdjacent >= 4) cell.classList.add('four-plus')
+            cell.innerText = mineAdjacent
+            score.push(parseInt(mineAdjacent))
+            const sum = score.reduce((accumulator, mineAdjacent) => {
+                return accumulator + mineAdjacent
               }, 0)
             pointsScored.innerText = sum
         }
+        if (cell.classList.contains('checked')) cellsChecked++
     }
+    checkLevelComplete()
 }
+
+const countMines = () => {
+    for (i=0; i<10; i++) {
+        for (j=0; j<10; j++){
+            let cell = grid.rows[i].cells[j]
+            if (cell.classList.contains('mine')) minesLeft++
+        }
+    }
+    console.log(minesLeft)
+}
+countMines()
 
 const addFlag = (cell) => {
     if (gameOver === true) return
@@ -109,5 +124,14 @@ const addFlag = (cell) => {
     }
 }
 
+const checkLevelComplete = () => {
+    let levelComplete = false
+    if (100 - cellsChecked == minesLeft) {
+        levelComplete = true
+    }
+    if (levelComplete == true){
+        alert('you win')
+    }
+}
 
 ///////////////////////////////////// completed: n/a
