@@ -32,7 +32,7 @@ level03.addEventListener('click', () => {
 
 playBtn.addEventListener('click', () => {
     if (select01 === true){
-        window.location='level_00.html'
+        window.location='level_01.html'
     } else if (select02 === true){
         window.location='level_02.html'
     } else if (select03 === true){

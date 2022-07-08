@@ -14,9 +14,6 @@ const pointsScored = document.querySelector('#score')
 pointsScored.innerText = 0
 let score = []
 
-const flagsLeft = document.querySelector('#flags-left')
-flagsLeft.innerText = 20
-let flags = 0
 let minesLeft = 0
 let cellsChecked = 0
 
@@ -41,6 +38,21 @@ const createBoard = () => {
     }
 }
 createBoard()
+
+const countMines = () => {
+    for (i=0; i<10; i++) {
+        for (j=0; j<10; j++){
+            let cell = grid.rows[i].cells[j]
+            if (cell.classList.contains('mine')) minesLeft++
+        }
+    }
+    console.log(minesLeft)
+}
+countMines()
+
+const flagsLeft = document.querySelector('#flags-left')
+flagsLeft.innerText = minesLeft
+let flags = 0
 
 ///////////////////////////////////// game logic
 
@@ -96,20 +108,9 @@ const click = (cell) => {
     checkLevelComplete()
 }
 
-const countMines = () => {
-    for (i=0; i<10; i++) {
-        for (j=0; j<10; j++){
-            let cell = grid.rows[i].cells[j]
-            if (cell.classList.contains('mine')) minesLeft++
-        }
-    }
-    console.log(minesLeft)
-}
-countMines()
-
 const addFlag = (cell) => {
     if (gameOver === true) return
-    if (!cell.classList.contains('checked') && (flags < minesLeft)) {
+    if (!cell.classList.contains('checked') && (flags < minesLeft +1)) {
         if (!cell.classList.contains('flag')) {
             cell.classList.add('flag')
             cell.innerHTML = ' 🚩'

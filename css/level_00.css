@@ -43,13 +43,14 @@ h2 {
 
 #grid {
     margin: 0 auto;
-    font-family: sans-serif;
+    font-family: 'Odibee Sans', sans-serif;
+    font-size: 1.5rem;
   }
 
 #grid TR TD{
-    border:1px solid white;
-    background: grey;
-    border: 1px solid white;
+    border:1px solid rgb(255, 255, 255);
+    background: rgb(128, 128, 128);
+    border: 2px solid rgb(255, 255, 255);
     width: 40px;
     height: 40px;
     text-align: center;
@@ -61,17 +62,18 @@ h2 {
   
 #grid TR TD.mine {
     background: orangered;
+    /* ** for testing purposes ** */
 }
   
 #grid TR TD.one {
     background-color: rgba(159, 235, 235, 0.959);
 }
 #grid TR TD.two {
-    background-color: aquamarine;
+    background-color: rgb(127, 255, 212);
 }
 #grid TR TD.three {
     background-color: rgb(92, 245, 237);
 }
 #grid TR TD.four-plus {
-    background-color: cyan;
+    background-color: rgb(0, 255, 255);
 }
