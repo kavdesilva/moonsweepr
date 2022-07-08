@@ -130,7 +130,7 @@ const addFlag = (cell) => {
 
 const checkLevelComplete = () => {
     let levelComplete = false
-    if (100 - cellsChecked == minesLeft) {
+    if (150 - cellsChecked == minesLeft) {
         levelComplete = true
     }
     if (levelComplete == true){
